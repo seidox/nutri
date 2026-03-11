@@ -1,11 +1,22 @@
+import "dotenv/config";
 import Database from "better-sqlite3";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const db = new Database(path.join(__dirname, "nutrition.db"));
+const configuredDbPath = String(process.env.DB_PATH || "").trim();
+const dbPath = configuredDbPath
+  ? path.isAbsolute(configuredDbPath)
+    ? configuredDbPath
+    : path.resolve(__dirname, configuredDbPath)
+  : path.join(__dirname, "nutrition.db");
+
+fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+
+const db = new Database(dbPath);
 db.pragma("journal_mode = WAL");
 
 const LEGACY_USER_ID = "legacy";

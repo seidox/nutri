@@ -6,7 +6,7 @@
 - Настройки норм и ежедневный вес.
 
 ## Что реализовано
-- Локальная БД SQLite (`backend/nutrition.db`).
+- Локальная БД SQLite (`DB_PATH`, по умолчанию `backend/nutrition.db`).
 - Шаблоны блюд и упражнений для повторного использования.
 - История по дням через выбор даты (стрелки вверху).
 - Вода с быстрыми кнопками и прогресс-баром.
@@ -32,6 +32,7 @@ copy .env.example .env
 ```
 4. Заполнить `OPENAI_API_KEY` в `.env`.
    Для Telegram-проверки также заполни `TELEGRAM_BOT_TOKEN`.
+   При необходимости задай `DB_PATH` (например `./nutrition.db` или абсолютный путь).
 5. Запустить API + бота одной командой:
 ```bash
 npm start
@@ -46,8 +47,9 @@ npm run start:bot
 ```
 
 ## GitHub + Railway (без `.env` в репозитории)
-- `.env` и `nutrition.db` должны быть только локально (см. `.gitignore`).
-- В GitHub пушится только код и `backend/.env.example`.
+- `.env` не должен попадать в репозиторий (см. `.gitignore`).
+- `nutrition.db` можно хранить в репозитории, если тебе это нужно.
+- В GitHub пушится код + `backend/.env.example` (+ при желании `nutrition.db`).
 - На Railway все секреты задаются в `Variables`:
   - `OPENAI_API_KEY`
   - `TELEGRAM_BOT_TOKEN`
