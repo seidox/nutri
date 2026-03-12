@@ -4,6 +4,7 @@ import cors from "cors";
 import db from "./db.js";
 import OpenAI from "openai";
 import crypto from "crypto";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { buildAiSummary, buildReportPayload, buildRuleBasedSummary, getProgressRows } from "./lib/analytics.js";
@@ -12,11 +13,15 @@ const app = express();
 const port = Number(process.env.PORT || 3001);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendDir = path.resolve(__dirname, "../frontend");
+const frontendDir =
+  [path.resolve(__dirname, "../frontend"), path.resolve(__dirname, "./public")].find((p) => fs.existsSync(p)) ||
+  null;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(frontendDir));
+if (frontendDir) {
+  app.use(express.static(frontendDir));
+}
 
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
@@ -541,7 +546,10 @@ app.post("/api/ai/macros", async (req, res) => {
 });
 
 app.get("*", (_, res) => {
-  res.sendFile(path.join(frontendDir, "index.html"));
+  if (!frontendDir) {
+    return res.status(404).send("Frontend bundle not found. Deploy with backend/public or repository root.");
+  }
+  return res.sendFile(path.join(frontendDir, "index.html"));
 });
 
 app.listen(port, () => {
