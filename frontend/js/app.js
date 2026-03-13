@@ -1,4 +1,5 @@
-const API = "http://localhost:3001/api";
+const API = "/api";
+const tg = window.Telegram?.WebApp ?? null;
 
 const state = {
   userId: "local-dev",
@@ -749,11 +750,11 @@ function bindEvents() {
 }
 
 async function init() {
-  if (window.Telegram?.WebApp) {
-    window.Telegram.WebApp.ready();
-    window.Telegram.WebApp.expand();
-    state.telegramInitData = window.Telegram.WebApp?.initData || "";
-    const tgUserId = window.Telegram.WebApp?.initDataUnsafe?.user?.id;
+  if (tg) {
+    tg.ready();
+    tg.expand();
+    state.telegramInitData = tg.initData || "";
+    const tgUserId = tg.initDataUnsafe?.user?.id;
     if (tgUserId !== undefined && tgUserId !== null) {
       state.userId = String(tgUserId);
     }
@@ -767,5 +768,5 @@ async function init() {
 
 init().catch((error) => {
   console.error(error);
-  alert("Не удалось загрузить данные. Проверьте backend на localhost:3001");
+  alert("Не удалось загрузить данные. Проверь подключение к серверу и Telegram initData.");
 });

@@ -2,12 +2,15 @@
 
 :root {
   --bg: #000000;
-  --card: #090909;
+  --card: #12061f;
+  --card-2: #0d0717;
   --text: #f7f0ff;
   --muted: #b7aacb;
-  --accent: #b400ff;
+  --accent: #ff3ca8;
+  --accent-2: #7b2cff;
   --blue: #4d8cff;
   --danger: #ff4b74;
+  --yellow: #ffbd2f;
 }
 
 * {
@@ -19,21 +22,23 @@ body {
   font-family: "Gilroy", "Manrope", "SF Pro Display", "Segoe UI", sans-serif;
   color: var(--text);
   background: #000;
+  min-height: 100vh;
 }
 
 .app-bg {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(900px 480px at 15% -10%, rgba(130, 32, 255, 0.28), transparent 55%),
-    radial-gradient(760px 400px at 90% 110%, rgba(160, 42, 255, 0.2), transparent 60%);
+    radial-gradient(700px 380px at 50% -12%, rgba(146, 19, 90, 0.35), transparent 58%),
+    radial-gradient(560px 300px at 50% 18%, rgba(92, 17, 153, 0.22), transparent 62%),
+    linear-gradient(180deg, #07020d, #000 42%);
   pointer-events: none;
 }
 
 .app {
-  width: min(760px, 100%);
+  width: min(430px, 100%);
   margin: 0 auto;
-  padding: 12px 12px 92px;
+  padding: max(12px, env(safe-area-inset-top)) 12px calc(96px + env(safe-area-inset-bottom));
   position: relative;
   z-index: 1;
 }
@@ -42,7 +47,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  gap: 10px;
 }
 
 .topbar-actions {
@@ -74,9 +80,11 @@ body {
 
 .topbar h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: 0.3px;
+  text-align: center;
+  flex: 1;
 }
 
 .tab {
@@ -89,22 +97,23 @@ body {
 }
 
 .card {
-  background: linear-gradient(180deg, var(--card), #060606);
-  border: 1px solid #4a1f73;
-  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(20, 7, 34, 0.96), rgba(12, 7, 22, 0.96));
+  border: 1px solid rgba(102, 42, 150, 0.52);
+  border-radius: 22px;
   padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .stats-card {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 14px;
+  grid-template-columns: 132px 1fr;
+  gap: 12px;
 }
 
 .ring-wrap {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 128px;
+  height: 128px;
 }
 
 .ring {
@@ -115,7 +124,7 @@ body {
 
 .ring-track {
   fill: none;
-  stroke: #22132f;
+  stroke: #2b1838;
   stroke-width: 12;
 }
 
@@ -138,7 +147,7 @@ body {
 }
 
 .big {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
 }
 
@@ -159,9 +168,9 @@ body {
 }
 
 .bar {
-  height: 10px;
+  height: 11px;
   border-radius: 999px;
-  background: #1b1126;
+  background: #281735;
   overflow: hidden;
 }
 
@@ -175,7 +184,7 @@ body {
 }
 
 .fat {
-  background: linear-gradient(90deg, #ffc548, #ff9e2f);
+  background: linear-gradient(90deg, var(--yellow), #ff9e2f);
 }
 
 .carbs {
@@ -196,14 +205,14 @@ body {
 
 h2 {
   margin: 0;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 800;
   letter-spacing: 0.2px;
 }
 
 h3 {
   margin: 0 0 10px;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .muted {
@@ -221,12 +230,12 @@ textarea,
 input,
 select {
   width: 100%;
-  border: 1px solid #55257f;
-  background: #080808;
+  border: 1px solid rgba(121, 44, 204, 0.7);
+  background: rgba(3, 3, 3, 0.72);
   color: var(--text);
   border-radius: 12px;
-  padding: 12px;
-  font-size: 17px;
+  padding: 12px 13px;
+  font-size: 16px;
   font-family: inherit;
 }
 
@@ -241,8 +250,8 @@ label {
 .icon-btn,
 .danger-btn {
   border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 16px;
+  padding: 11px 14px;
+  font-size: 15px;
   font-family: inherit;
   cursor: pointer;
   border: 1px solid transparent;
@@ -263,8 +272,8 @@ label {
 
 .ghost-btn,
 .icon-btn {
-  border-color: #5c2e87;
-  background: #080808;
+  border-color: rgba(116, 55, 170, 0.78);
+  background: rgba(8, 8, 8, 0.9);
 }
 
 .danger-btn {
@@ -279,9 +288,9 @@ label {
 }
 
 .item {
-  background: #050505;
-  border: 1px solid #492169;
-  border-radius: 13px;
+  background: rgba(7, 7, 9, 0.86);
+  border: 1px solid rgba(89, 36, 133, 0.55);
+  border-radius: 16px;
   padding: 10px;
 }
 
@@ -293,12 +302,12 @@ label {
 }
 
 .item-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .item-meta {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -340,9 +349,9 @@ label {
 
 .chart {
   width: 100%;
-  height: 220px;
-  background: #040404;
-  border: 1px solid #4a216d;
+  height: 200px;
+  background: rgba(5, 5, 8, 0.9);
+  border: 1px solid rgba(89, 40, 131, 0.55);
   border-radius: 12px;
   margin-top: 8px;
 }
@@ -374,13 +383,13 @@ label {
 
 .bottom-nav {
   position: fixed;
-  bottom: 8px;
+  bottom: max(8px, env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%);
-  width: min(760px, calc(100% - 16px));
-  background: rgba(4, 4, 4, 0.98);
-  border: 1px solid #562a81;
-  border-radius: 16px;
+  width: min(430px, calc(100% - 16px));
+  background: rgba(12, 7, 20, 0.98);
+  border: 1px solid rgba(101, 40, 150, 0.75);
+  border-radius: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
@@ -389,26 +398,26 @@ label {
 }
 
 .nav-btn {
-  border: 1px solid #5c3383;
-  border-radius: 12px;
-  background: #060606;
+  border: 1px solid rgba(88, 45, 126, 0.78);
+  border-radius: 14px;
+  background: rgba(11, 9, 18, 0.96);
   color: #c9bcdd;
-  padding: 12px;
-  font-size: 16px;
+  padding: 11px 8px;
+  font-size: 14px;
   font-family: inherit;
 }
 
 .nav-btn.active {
-  color: #fff;
-  border-color: #7d45b1;
-  background: #111111;
+  color: #ff4bab;
+  border-color: rgba(255, 60, 168, 0.7);
+  background: rgba(40, 15, 48, 0.95);
 }
 
 .sheet {
   width: min(540px, calc(100% - 20px));
-  border: 1px solid #3b2459;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #130b22, #0b0714);
+  border: 1px solid rgba(106, 46, 159, 0.8);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #14091f, #0d0716);
   color: var(--text);
   padding: 0;
 }
@@ -476,8 +485,8 @@ label {
 }
 
 .calendar-day.active {
-  border-color: #b874ff;
-  box-shadow: 0 0 0 1px #b874ff inset;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
 }
 
 .dialog-actions {
@@ -491,15 +500,23 @@ label {
 }
 
 @media (max-width: 640px) {
-  .topbar h1 {
-    font-size: 24px;
-  }
-  h2 {
-    font-size: 22px;
-  }
   .stats-card {
     grid-template-columns: 1fr;
     justify-items: center;
+  }
+  .water-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dialog-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .calendar-btn,
+  .ghost-btn,
+  .primary-btn,
+  .danger-btn {
+    min-height: 44px;
   }
   .grid2,
   .grid3 {

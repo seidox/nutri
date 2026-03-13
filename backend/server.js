@@ -168,7 +168,7 @@ app.get("/api/day-summary", (req, res) => {
   res.json({ date, nutrition, water_ml, settings, weight: weight ?? null });
 });
 
-app.get("/api/food/templates", (_, res) => {
+app.get("/api/food/templates", (req, res) => {
   const templates = db
     .prepare(
       `
@@ -177,7 +177,7 @@ app.get("/api/food/templates", (_, res) => {
     ORDER BY name COLLATE NOCASE ASC
   `
     )
-    .all(_.userId);
+    .all(req.userId);
   res.json(templates);
 });
 
@@ -285,7 +285,9 @@ app.post("/api/food/entries", (req, res) => {
       finalCarbs
     );
 
-  const entry = db.prepare("SELECT * FROM food_entries WHERE id = ?").get(info.lastInsertRowid);
+  const entry = db
+    .prepare("SELECT * FROM food_entries WHERE id = ? AND user_id = ?")
+    .get(info.lastInsertRowid, req.userId);
   res.status(201).json(entry);
 });
 
@@ -342,10 +344,12 @@ app.post("/api/water/entries", (req, res) => {
   const info = db
     .prepare("INSERT INTO water_entries (user_id, date, volume_ml) VALUES (?, ?, ?)")
     .run(req.userId, date, volume_ml);
-  res.status(201).json(db.prepare("SELECT * FROM water_entries WHERE id = ?").get(info.lastInsertRowid));
+  res
+    .status(201)
+    .json(db.prepare("SELECT * FROM water_entries WHERE id = ? AND user_id = ?").get(info.lastInsertRowid, req.userId));
 });
 
-app.get("/api/training/templates", (_, res) => {
+app.get("/api/training/templates", (req, res) => {
   const templates = db
     .prepare(
       `
@@ -354,7 +358,7 @@ app.get("/api/training/templates", (_, res) => {
     ORDER BY name COLLATE NOCASE ASC
   `
     )
-    .all(_.userId);
+    .all(req.userId);
   res.json(templates);
 });
 
@@ -416,7 +420,13 @@ app.post("/api/training/entries", (req, res) => {
     )
     .run(req.userId, entryDate, finalTemplateId, finalExerciseName, finalSets, finalReps, finalWeight);
 
-  res.status(201).json(db.prepare("SELECT * FROM training_entries WHERE id = ?").get(info.lastInsertRowid));
+  res
+    .status(201)
+    .json(
+      db
+        .prepare("SELECT * FROM training_entries WHERE id = ? AND user_id = ?")
+        .get(info.lastInsertRowid, req.userId)
+    );
 });
 
 app.put("/api/training/entries/:id", (req, res) => {
