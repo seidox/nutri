@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -14,11 +14,10 @@
         <button id="prevDayBtn" class="ghost-btn nav-arrow">&#8249;</button>
         <div class="date-center">
           <h1 id="dateTitle"></h1>
-          <button id="todayBtn" class="today-btn" type="button">Сегодня</button>
         </div>
         <div class="topbar-actions">
-          <button id="calendarBtn" class="calendar-btn" title="Календарь" aria-label="Open calendar">
-            Календарь
+          <button id="calendarBtn" class="calendar-btn" title="РљР°Р»РµРЅРґР°СЂСЊ" aria-label="Open calendar">
+            РљР°Р»РµРЅРґР°СЂСЊ
           </button>
           <button id="nextDayBtn" class="ghost-btn nav-arrow">&#8250;</button>
         </div>
@@ -33,20 +32,20 @@
             </svg>
             <div class="ring-text">
               <div id="caloriesValue" class="big">0</div>
-              <div class="ring-unit">ккал</div>
+              <div class="ring-unit">РєРєР°Р»</div>
             </div>
           </div>
           <div class="macro-bars">
             <div class="bar-row">
-              <div class="bar-head"><span>Белки</span><span id="proteinText">0/0 г</span></div>
+              <div class="bar-head"><span>Р‘РµР»РєРё</span><span id="proteinText">0/0 Рі</span></div>
               <div class="bar"><div id="proteinBar" class="bar-fill protein"></div></div>
             </div>
             <div class="bar-row">
-              <div class="bar-head"><span>Жиры</span><span id="fatText">0/0 г</span></div>
+              <div class="bar-head"><span>Р–РёСЂС‹</span><span id="fatText">0/0 Рі</span></div>
               <div class="bar"><div id="fatBar" class="bar-fill fat"></div></div>
             </div>
             <div class="bar-row">
-              <div class="bar-head"><span>Углеводы</span><span id="carbText">0/0 г</span></div>
+              <div class="bar-head"><span>РЈРіР»РµРІРѕРґС‹</span><span id="carbText">0/0 Рі</span></div>
               <div class="bar"><div id="carbBar" class="bar-fill carbs"></div></div>
             </div>
           </div>
@@ -54,10 +53,10 @@
 
         <div class="card">
           <div class="card-title-row water-head">
-            <h2>Вода</h2>
-            <div id="waterText" class="water-target">0 / 0 мл</div>
+            <h2>Р’РѕРґР°</h2>
+            <div id="waterText" class="water-target">0 / 0 РјР»</div>
           </div>
-          <div id="waterCurrent" class="water-current">0 мл</div>
+          <div id="waterCurrent" class="water-current">0 РјР»</div>
           <div class="bar"><div id="waterBar" class="bar-fill water-fill"></div></div>
           <div class="water-actions">
             <button class="ghost-btn water-add" data-ml="100">+100 ml</button>
@@ -69,17 +68,17 @@
 
         <div class="card">
           <div class="card-title-row">
-            <h2>AI-подсказки</h2>
+            <h2>AI-РїРѕРґСЃРєР°Р·РєРё</h2>
           </div>
-          <textarea id="aiInput" rows="3" placeholder="Например: 250 г гречки с курицей"></textarea>
-          <button id="askAiBtn" class="primary-btn">Узнать КБЖУ</button>
+          <textarea id="aiInput" rows="3" placeholder="РќР°РїСЂРёРјРµСЂ: 250 Рі РіСЂРµС‡РєРё СЃ РєСѓСЂРёС†РµР№"></textarea>
+          <button id="askAiBtn" class="primary-btn">РЈР·РЅР°С‚СЊ РљР‘Р–РЈ</button>
           <pre id="aiAnswer" class="ai-answer"></pre>
         </div>
 
         <div class="card">
           <div class="card-title-row">
-            <h2>Приемы пищи</h2>
-            <button id="addFoodBtn" class="primary-btn small">Добавить</button>
+            <h2>РџСЂРёРµРјС‹ РїРёС‰Рё</h2>
+            <button id="addFoodBtn" class="primary-btn small">Р”РѕР±Р°РІРёС‚СЊ</button>
           </div>
           <div id="foodList" class="list"></div>
         </div>
@@ -88,8 +87,8 @@
       <section id="tab-training" class="tab">
         <div class="card">
           <div class="card-title-row">
-            <h2>Тренировки</h2>
-            <button id="addTrainingBtn" class="primary-btn small">Добавить</button>
+            <h2>РўСЂРµРЅРёСЂРѕРІРєРё</h2>
+            <button id="addTrainingBtn" class="primary-btn small">Р”РѕР±Р°РІРёС‚СЊ</button>
           </div>
           <div id="trainingList" class="list"></div>
         </div>
@@ -97,7 +96,7 @@
 
       <section id="tab-settings" class="tab">
         <div class="card">
-          <h2>Нормы на день</h2>
+          <h2>РќРѕСЂРјС‹ РЅР° РґРµРЅСЊ</h2>
           <div class="grid2">
             <label>Calories<input id="goalCalories" type="number" /></label>
             <label>Protein<input id="goalProtein" type="number" /></label>
@@ -109,7 +108,7 @@
         </div>
 
         <div class="card">
-          <h2>Вес</h2>
+          <h2>Р’РµСЃ</h2>
           <label>Weight (kg)<input id="weightInput" type="number" step="0.1" /></label>
           <button id="saveWeightBtn" class="primary-btn">Save weight</button>
           <canvas id="weightChart" class="chart" width="680" height="220"></canvas>
@@ -142,64 +141,64 @@
       </section>
 
       <nav class="bottom-nav">
-        <button class="nav-btn active" data-tab="nutrition">Сегодня</button>
-        <button class="nav-btn" data-tab="training">Трени</button>
-        <button class="nav-btn" data-tab="settings">Еще</button>
+        <button class="nav-btn active" data-tab="nutrition">РЎРµРіРѕРґРЅСЏ</button>
+        <button class="nav-btn" data-tab="training">РўСЂРµРЅРё</button>
+        <button class="nav-btn" data-tab="settings">Р•С‰Рµ</button>
       </nav>
     </main>
 
     <dialog id="foodDialog" class="sheet">
       <form id="foodForm" method="dialog">
-        <h3 id="foodDialogTitle">Добавить прием пищи</h3>
+        <h3 id="foodDialogTitle">Р”РѕР±Р°РІРёС‚СЊ РїСЂРёРµРј РїРёС‰Рё</h3>
         <label>
-          Выбор
+          Р’С‹Р±РѕСЂ
           <select id="foodMode">
-            <option value="existing">Из базы</option>
-            <option value="new">Новое</option>
+            <option value="existing">РР· Р±Р°Р·С‹</option>
+            <option value="new">РќРѕРІРѕРµ</option>
           </select>
         </label>
         <label id="foodTemplateWrap">
-          Продукт/блюдо
+          РџСЂРѕРґСѓРєС‚/Р±Р»СЋРґРѕ
           <select id="foodTemplateSelect"></select>
         </label>
-        <label id="foodNameWrap" class="hidden">Название<input id="foodNameInput" type="text" /></label>
-        <label>Граммовка<input id="foodGramsInput" type="number" step="0.1" /></label>
+        <label id="foodNameWrap" class="hidden">РќР°Р·РІР°РЅРёРµ<input id="foodNameInput" type="text" /></label>
+        <label>Р“СЂР°РјРјРѕРІРєР°<input id="foodGramsInput" type="number" step="0.1" /></label>
         <div id="foodMacrosWrap" class="grid2">
-          <label>Калории (на 100г)<input id="foodCaloriesInput" type="number" step="0.1" /></label>
-          <label>Белки (на 100г)<input id="foodProteinInput" type="number" step="0.1" /></label>
-          <label>Жиры (на 100г)<input id="foodFatInput" type="number" step="0.1" /></label>
-          <label>Углеводы (на 100г)<input id="foodCarbsInput" type="number" step="0.1" /></label>
+          <label>РљР°Р»РѕСЂРёРё (РЅР° 100Рі)<input id="foodCaloriesInput" type="number" step="0.1" /></label>
+          <label>Р‘РµР»РєРё (РЅР° 100Рі)<input id="foodProteinInput" type="number" step="0.1" /></label>
+          <label>Р–РёСЂС‹ (РЅР° 100Рі)<input id="foodFatInput" type="number" step="0.1" /></label>
+          <label>РЈРіР»РµРІРѕРґС‹ (РЅР° 100Рі)<input id="foodCarbsInput" type="number" step="0.1" /></label>
         </div>
         <div class="dialog-actions">
-          <button id="foodCancelBtn" type="button" class="ghost-btn">Отмена</button>
-          <button id="foodSaveBtn" value="default" class="primary-btn">Сохранить</button>
+          <button id="foodCancelBtn" type="button" class="ghost-btn">РћС‚РјРµРЅР°</button>
+          <button id="foodSaveBtn" value="default" class="primary-btn">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
         </div>
       </form>
     </dialog>
 
     <dialog id="trainingDialog" class="sheet">
       <form id="trainingForm" method="dialog">
-        <h3 id="trainingDialogTitle">Добавить упражнение</h3>
+        <h3 id="trainingDialogTitle">Р”РѕР±Р°РІРёС‚СЊ СѓРїСЂР°Р¶РЅРµРЅРёРµ</h3>
         <label>
-          Выбор
+          Р’С‹Р±РѕСЂ
           <select id="trainingMode">
-            <option value="existing">Из базы</option>
-            <option value="new">Новое</option>
+            <option value="existing">РР· Р±Р°Р·С‹</option>
+            <option value="new">РќРѕРІРѕРµ</option>
           </select>
         </label>
         <label id="trainingTemplateWrap">
-          Упражнение
+          РЈРїСЂР°Р¶РЅРµРЅРёРµ
           <select id="trainingTemplateSelect"></select>
         </label>
-        <label id="trainingNameWrap" class="hidden">Название<input id="trainingNameInput" type="text" /></label>
+        <label id="trainingNameWrap" class="hidden">РќР°Р·РІР°РЅРёРµ<input id="trainingNameInput" type="text" /></label>
         <div class="grid3">
-          <label>Подходы<input id="trainingSetsInput" type="number" min="1" value="1" /></label>
-          <label>Повторы<input id="trainingRepsInput" type="number" min="1" value="1" /></label>
-          <label>Вес (кг)<input id="trainingWeightInput" type="number" step="0.5" value="0" /></label>
+          <label>РџРѕРґС…РѕРґС‹<input id="trainingSetsInput" type="number" min="1" value="1" /></label>
+          <label>РџРѕРІС‚РѕСЂС‹<input id="trainingRepsInput" type="number" min="1" value="1" /></label>
+          <label>Р’РµСЃ (РєРі)<input id="trainingWeightInput" type="number" step="0.5" value="0" /></label>
         </div>
         <div class="dialog-actions">
-          <button id="trainingCancelBtn" type="button" class="ghost-btn">Отмена</button>
-          <button id="trainingSaveBtn" value="default" class="primary-btn">Сохранить</button>
+          <button id="trainingCancelBtn" type="button" class="ghost-btn">РћС‚РјРµРЅР°</button>
+          <button id="trainingSaveBtn" value="default" class="primary-btn">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
         </div>
       </form>
     </dialog>
@@ -222,3 +221,4 @@
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>
+

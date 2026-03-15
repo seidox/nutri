@@ -677,10 +677,6 @@ function bindEvents() {
     shiftDate(-1);
     await loadAll();
   });
-  el.todayBtn.addEventListener("click", async () => {
-    state.date = new Date().toISOString().slice(0, 10);
-    await loadAll();
-  });
   el.calendarBtn.addEventListener("click", openCalendar);
   el.calendarCloseBtn.addEventListener("click", () => el.calendarDialog.close());
   el.calendarPrevMonthBtn.addEventListener("click", () => {

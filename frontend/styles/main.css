@@ -62,7 +62,7 @@ body {
   flex: 1;
   display: grid;
   justify-items: center;
-  gap: 4px;
+  gap: 0;
 }
 
 .date-center h1 {
@@ -71,17 +71,6 @@ body {
   font-weight: 800;
   line-height: 1.05;
   text-align: center;
-}
-
-.today-btn {
-  height: 30px;
-  padding: 0 11px;
-  border-radius: 10px;
-  border: 1px solid rgba(116, 55, 170, 0.78);
-  background: rgba(12, 10, 18, 0.95);
-  color: var(--text);
-  font-size: 12px;
-  font-family: inherit;
 }
 
 .calendar-btn {
@@ -126,15 +115,17 @@ body {
 
 .stats-card {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: minmax(116px, 38%) minmax(0, 62%);
   gap: 12px;
-  align-items: center;
+  align-items: start;
 }
 
 .ring-wrap {
   position: relative;
   width: 116px;
   height: 116px;
+  justify-self: center;
+  align-self: center;
 }
 
 .ring {
@@ -184,6 +175,7 @@ body {
 .macro-bars {
   display: grid;
   gap: 10px;
+  padding-top: 6px;
 }
 
 .bar-row {
@@ -548,11 +540,7 @@ label {
 }
 
 @media (max-width: 640px) {
-  .stats-card {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-  .date-bar {
+.date-bar {
     display: grid;
     grid-template-columns: 36px 1fr auto;
   }
@@ -584,4 +572,5 @@ label {
     grid-column: span 1;
   }
 }
+
 
