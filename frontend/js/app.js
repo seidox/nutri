@@ -21,7 +21,6 @@ const state = {
 const el = {
   dateTitle: document.getElementById("dateTitle"),
   prevDayBtn: document.getElementById("prevDayBtn"),
-  todayBtn: document.getElementById("todayBtn"),
   calendarBtn: document.getElementById("calendarBtn"),
   nextDayBtn: document.getElementById("nextDayBtn"),
   calendarDialog: document.getElementById("calendarDialog"),
