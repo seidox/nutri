@@ -310,6 +310,15 @@ label {
   padding: 6px 10px;
 }
 
+.compact-btn {
+  width: fit-content;
+  min-width: 0;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
 .ghost-btn,
 .icon-btn {
   border-color: rgba(116, 55, 170, 0.78);

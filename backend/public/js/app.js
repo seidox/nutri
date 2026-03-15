@@ -334,11 +334,6 @@ function renderWeightChart() {
   drawLineChart(el.weightChart, labels, [{ color: "#ff3ca8", values: normalized }], 100);
 }
 
-function prefillReportRange() {
-  if (!el.reportTo.value) el.reportTo.value = state.date;
-  if (!el.reportFrom.value) el.reportFrom.value = getDateShift(state.date, -13);
-}
-
 function monthStart(iso) {
   const d = new Date(`${iso}T12:00:00`);
   d.setDate(1);
@@ -419,7 +414,6 @@ async function loadAll() {
   renderWeightHistory();
   renderProgressChart();
   renderWeightChart();
-  prefillReportRange();
 }
 
 async function addWater(volumeMl) {
@@ -750,7 +744,9 @@ function bindEvents() {
   el.saveSettingsBtn.addEventListener("click", saveSettings);
   el.saveWeightBtn.addEventListener("click", saveWeight);
   el.askAiBtn.addEventListener("click", askAi);
-  el.buildReportBtn.addEventListener("click", buildReport);
+  if (el.buildReportBtn) {
+    el.buildReportBtn.addEventListener("click", buildReport);
+  }
 }
 
 async function init() {
