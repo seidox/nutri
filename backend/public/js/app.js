@@ -39,6 +39,7 @@ const el = {
   fatBar: document.getElementById("fatBar"),
   carbBar: document.getElementById("carbBar"),
   waterText: document.getElementById("waterText"),
+  waterCurrent: document.getElementById("waterCurrent"),
   waterBar: document.getElementById("waterBar"),
   foodList: document.getElementById("foodList"),
   trainingList: document.getElementById("trainingList"),
@@ -151,6 +152,9 @@ function renderSummary() {
   el.carbBar.style.width = `${pct(n.carbs, s.carbs_goal)}%`;
 
   el.waterText.textContent = `${state.summary.water_ml} / ${s.water_goal_ml} мл`;
+  if (el.waterCurrent) {
+    el.waterCurrent.textContent = `${state.summary.water_ml} мл`;
+  }
   el.waterBar.style.width = `${pct(state.summary.water_ml, s.water_goal_ml)}%`;
 }
 

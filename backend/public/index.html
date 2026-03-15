@@ -10,12 +10,7 @@
   <body>
     <div class="app-bg"></div>
     <main class="app">
-      <header class="screen-head">
-        <div class="brand">NTRTN</div>
-        <div class="brand-sub">мини-приложение</div>
-      </header>
-
-      <section class="date-bar card">
+      <section class="date-bar">
         <button id="prevDayBtn" class="ghost-btn nav-arrow">&#8249;</button>
         <div class="date-center">
           <h1 id="dateTitle"></h1>
@@ -38,7 +33,7 @@
             </svg>
             <div class="ring-text">
               <div id="caloriesValue" class="big">0</div>
-              <div>kcal</div>
+              <div class="ring-unit">ккал</div>
             </div>
           </div>
           <div class="macro-bars">
@@ -58,10 +53,11 @@
         </div>
 
         <div class="card">
-          <div class="card-title-row">
+          <div class="card-title-row water-head">
             <h2>Вода</h2>
-            <div id="waterText" class="muted">0 / 0 ml</div>
+            <div id="waterText" class="water-target">0 / 0 мл</div>
           </div>
+          <div id="waterCurrent" class="water-current">0 мл</div>
           <div class="bar"><div id="waterBar" class="bar-fill water-fill"></div></div>
           <div class="water-actions">
             <button class="ghost-btn water-add" data-ml="100">+100 ml</button>
