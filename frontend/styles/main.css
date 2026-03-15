@@ -429,17 +429,17 @@ label {
   width: min(430px, calc(100% - 16px));
   background: rgba(12, 7, 20, 0.98);
   border: 1px solid rgba(101, 40, 150, 0.75);
-  border-radius: 18px;
+  border-radius: 28px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
-  padding: 5px;
+  padding: 7px;
   z-index: 10;
 }
 
 .nav-btn {
   border: 1px solid rgba(88, 45, 126, 0.78);
-  border-radius: 12px;
+  border-radius: 22px;
   background: rgba(11, 9, 18, 0.96);
   color: #c9bcdd;
   padding: 9px 6px;
