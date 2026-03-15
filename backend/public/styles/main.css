@@ -38,7 +38,7 @@ body {
 .app {
   width: min(430px, 100%);
   margin: 0 auto;
-  padding: max(10px, env(safe-area-inset-top)) 10px calc(88px + env(safe-area-inset-bottom));
+  padding: max(10px, env(safe-area-inset-top)) 10px calc(108px + env(safe-area-inset-bottom));
   position: relative;
   z-index: 1;
 }
@@ -423,7 +423,7 @@ label {
 
 .bottom-nav {
   position: fixed;
-  bottom: max(8px, env(safe-area-inset-bottom));
+  bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
   left: 50%;
   transform: translateX(-50%);
   width: min(430px, calc(100% - 16px));
