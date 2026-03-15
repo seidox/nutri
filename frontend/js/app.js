@@ -21,6 +21,7 @@ const state = {
 const el = {
   dateTitle: document.getElementById("dateTitle"),
   prevDayBtn: document.getElementById("prevDayBtn"),
+  todayBtn: document.getElementById("todayBtn"),
   calendarBtn: document.getElementById("calendarBtn"),
   nextDayBtn: document.getElementById("nextDayBtn"),
   calendarDialog: document.getElementById("calendarDialog"),
@@ -142,20 +143,20 @@ function renderSummary() {
   const ringCirc = 314;
   el.calRing.style.strokeDashoffset = String(ringCirc - (calPercent / 100) * ringCirc);
 
-  el.proteinText.textContent = `${n.protein.toFixed(1)}/${s.protein_goal} g`;
-  el.fatText.textContent = `${n.fat.toFixed(1)}/${s.fat_goal} g`;
-  el.carbText.textContent = `${n.carbs.toFixed(1)}/${s.carbs_goal} g`;
+  el.proteinText.textContent = `${n.protein.toFixed(1)}/${s.protein_goal} г`;
+  el.fatText.textContent = `${n.fat.toFixed(1)}/${s.fat_goal} г`;
+  el.carbText.textContent = `${n.carbs.toFixed(1)}/${s.carbs_goal} г`;
   el.proteinBar.style.width = `${pct(n.protein, s.protein_goal)}%`;
   el.fatBar.style.width = `${pct(n.fat, s.fat_goal)}%`;
   el.carbBar.style.width = `${pct(n.carbs, s.carbs_goal)}%`;
 
-  el.waterText.textContent = `${state.summary.water_ml} / ${s.water_goal_ml} ml`;
+  el.waterText.textContent = `${state.summary.water_ml} / ${s.water_goal_ml} мл`;
   el.waterBar.style.width = `${pct(state.summary.water_ml, s.water_goal_ml)}%`;
 }
 
 function renderFoodList() {
   if (!state.foodEntries.length) {
-    el.foodList.innerHTML = `<div class="item"><div class="item-meta">No meals for this day</div></div>`;
+    el.foodList.innerHTML = `<div class="item"><div class="item-meta">Нет приемов пищи за этот день</div></div>`;
     return;
   }
 
@@ -179,7 +180,7 @@ function renderFoodList() {
 
 function renderTrainingList() {
   if (!state.trainingEntries.length) {
-    el.trainingList.innerHTML = `<div class="item"><div class="item-meta">No training entries for this day</div></div>`;
+    el.trainingList.innerHTML = `<div class="item"><div class="item-meta">Нет тренировок за этот день</div></div>`;
     return;
   }
 
@@ -203,7 +204,7 @@ function renderTrainingList() {
 
 function renderWeightHistory() {
   if (!state.weightHistory.length) {
-    el.weightHistory.innerHTML = `<div class="item"><div class="item-meta">Weight history is empty</div></div>`;
+    el.weightHistory.innerHTML = `<div class="item"><div class="item-meta">История веса пока пустая</div></div>`;
     return;
   }
 
@@ -670,6 +671,10 @@ function bindTabs() {
 function bindEvents() {
   el.prevDayBtn.addEventListener("click", async () => {
     shiftDate(-1);
+    await loadAll();
+  });
+  el.todayBtn.addEventListener("click", async () => {
+    state.date = new Date().toISOString().slice(0, 10);
     await loadAll();
   });
   el.calendarBtn.addEventListener("click", openCalendar);

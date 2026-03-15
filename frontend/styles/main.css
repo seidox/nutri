@@ -43,18 +43,63 @@ body {
   z-index: 1;
 }
 
-.topbar {
+.screen-head {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 12px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1.1px;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.date-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
   gap: 10px;
+  padding: 12px;
 }
 
 .topbar-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.date-center {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.date-center h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.today-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(116, 55, 170, 0.78);
+  background: rgba(12, 10, 18, 0.95);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
 }
 
 .calendar-btn {
@@ -73,18 +118,11 @@ body {
   font-weight: 600;
 }
 
-.calendar-icon {
-  font-size: 18px;
-  line-height: 1;
-}
-
-.topbar h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  text-align: center;
-  flex: 1;
+.nav-arrow {
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  font-size: 22px;
 }
 
 .tab {
@@ -108,12 +146,13 @@ body {
   display: grid;
   grid-template-columns: 132px 1fr;
   gap: 12px;
+  align-items: center;
 }
 
 .ring-wrap {
   position: relative;
-  width: 128px;
-  height: 128px;
+  width: 122px;
+  height: 122px;
 }
 
 .ring {
@@ -147,7 +186,7 @@ body {
 }
 
 .big {
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 800;
 }
 
@@ -503,6 +542,16 @@ label {
   .stats-card {
     grid-template-columns: 1fr;
     justify-items: center;
+  }
+  .date-bar {
+    display: grid;
+    grid-template-columns: 46px 1fr 46px;
+  }
+  .topbar-actions {
+    justify-content: end;
+  }
+  .topbar-actions .calendar-btn {
+    min-width: 126px;
   }
   .water-actions {
     display: grid;
